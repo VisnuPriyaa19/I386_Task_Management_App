@@ -1,0 +1,276 @@
+<html>
+<head>
+  <title>Task Management App</title>
+  <!-- add browser icon -->
+  <link rel="icon" href="https://raw.githubusercontent.com/VisnuPriyaa19/I386_Task_Management_App/main/logo.png">                                
+</head>
+<style>
+    body {
+  font-family: poppins;
+  background-color: #dcaf9e;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 1000px;
+  display: flex;
+  gap: 40px;
+}
+
+.image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.task-manager {
+  flex: 1;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #080808;
+}
+
+#taskForm {
+  display: flex;
+  flex-direction: column;
+}
+
+#taskForm input, #taskForm textarea {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  font-family: poppins;
+}
+
+#taskForm button {
+  padding: 10px;
+  background-color: #dcaf9e;
+  color: black;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: poppins;
+}
+
+#taskForm button:hover {
+  background-color: #c99e8e;
+}
+
+.filters {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+.filters button {
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-family: poppins;
+}
+
+.filters button:hover {
+  background-color: #0056b3;
+}
+
+#taskList {
+  max-height: 300px;
+  overflow-y: auto; /* Enable vertical scrolling */
+  margin-top: 20px;
+  padding-right: 10px; /* Add some padding to avoid scrollbar overlap */
+}
+
+.task {
+  background: #f9f9f9;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.2s ease;
+}
+
+.task:hover {
+  transform: scale(1.02);
+}
+
+.task.completed {
+  background-color: #d4edda;
+}
+
+.task .actions {
+  display: flex;
+  gap: 10px;
+}
+
+.task .actions button {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.task .actions .edit {
+  background-color: #ffc107;
+  color:white;
+}
+
+.task .actions .delete {
+  background-color: #dc3545;
+  color: white;
+}
+
+.task .actions .status {
+  background-color: #28a745;
+  color: white;
+}
+</style>
+<body>
+  <div class="container">
+    <!-- Image Section -->
+    <div class="image">
+      <img src="https://raw.githubusercontent.com/VisnuPriyaa19/I386_Task_Management_App/main/bg_pic.png" style="max-width: 100%; height: auto;">
+    </div>
+
+    <!-- Task Manager Section -->
+    <div class="task-manager">
+      <h1>Task Manager</h1>
+
+      <!-- Form to add tasks -->
+      <form id="taskForm">
+        <input type="text" id="taskName" placeholder="Task Name" required>              <!-- required:to ensure no blanks-->
+        <textarea id="taskDesc" placeholder="Task Description" required></textarea>
+        <button type="submit" id="add">Add Task</button>
+      </form>
+
+      <!-- Filter buttons -->
+      <div class="filters">
+        <button id="filterAll">All</button>
+        <button id="filterCompleted">Completed</button>
+        <button id="filterPending">Pending</button>
+      </div>
+
+      <!-- Task list to display list of tasks -->
+      <div id="taskList">
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const taskForm = document.getElementById('taskForm');                 //const is used to avoid reassignment
+const taskName = document.getElementById('taskName');
+const taskDesc = document.getElementById('taskDesc');
+const taskList = document.getElementById('taskList');                 //to dynamically manage task list
+const filterAll = document.getElementById('filterAll');               //to add functionality to All, Completed, Pending buttons
+const filterCompleted = document.getElementById('filterCompleted');
+const filterPending = document.getElementById('filterPending');
+
+// Load tasks from browser's local storage or initialize empty array if no task is found
+//tasks - an array to store all the tasks, localStorage-stores only strings, JSON.parse-converts into array
+let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+
+// Function to display tasks
+function showTasks(filter = 'all')                                     //optional parameter - (filter) with default value - (all)
+{
+  // Clear the task list
+  taskList.innerHTML = '';                  
+  //filters tasks array based on 'filter' parameter
+  const filteredTasks = filter === 'all' ? tasks : tasks.filter(task => task.status === filter);
+  //loop through each task in filteredTasks array
+  filteredTasks.forEach((task, index) => 
+    {
+    const taskElement = document.createElement('div');                 //create seperate div element for each task
+    taskElement.classList.add('task');                                 //CSS class
+    if (task.status === 'completed') {
+      taskElement.classList.add('completed');                          //to apply specific CSS styling to completed tasks
+    }
+    taskElement.innerHTML = `
+      <div>
+        <h3>${task.name}</h3>
+        <p>${task.description}</p>
+      </div>
+      <div class="actions">
+        <button class="status" onclick="toggleStatus(${index})">${task.status === 'completed' ? 'Pending' : 'Completed'}</button>
+        <button class="edit" onclick="editTask(${index})">Edit</button>
+        <button class="delete" onclick="deleteTask(${index})">Delete</button>
+      </div>
+    `;
+    taskList.appendChild(taskElement);
+  });
+}
+
+// Function to add a new task
+function addTask(name, description) 
+{
+  tasks.push({ name, description, status: 'pending' });               //default status:pending 
+  localStorage.setItem('tasks', JSON.stringify(tasks));               //save tasks to local storage
+  showTasks();
+}
+
+// Function to toggle task status
+function toggleStatus(index) 
+{
+  tasks[index].status = tasks[index].status === 'completed' ? 'pending' : 'completed';
+  localStorage.setItem('tasks', JSON.stringify(tasks));             //save updated tasks to local storage
+  showTasks();
+}
+
+// Function to edit a task
+function editTask(index) 
+{
+  const task = tasks[index];                                         //tasks object at specified index is stored in task variable
+  taskName.value = task.name;                                 
+  taskDesc.value = task.description;
+  tasks.splice(index, 1);                                            //removes the task at specified index from tasks array
+  localStorage.setItem('tasks', JSON.stringify(tasks));              //save edited tasks to local storage
+  showTasks();
+}
+
+// Function to delete a task
+function deleteTask(index) 
+{
+  tasks.splice(index, 1);                                            //splice - remove task at specified index
+  localStorage.setItem('tasks', JSON.stringify(tasks));
+  showTasks();
+}
+
+// Event listeners
+taskForm.addEventListener('submit', (e) =>                           //e - event obj containing info about the event
+  {
+  e.preventDefault();                                               //prevents the brwoser from reloading the page whwn form is submitted
+  addTask(taskName.value, taskDesc.value);                          //call addTask() function
+  taskForm.reset();                                                 //reset the form
+});
+
+filterAll.addEventListener('click', () => showTasks('all'));
+filterCompleted.addEventListener('click', () => showTasks('completed'));
+filterPending.addEventListener('click', () => showTasks('pending'));
+
+// Initial function calling to display tasks
+showTasks();
+  </script>
+</body>
+</html>
