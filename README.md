@@ -31,7 +31,7 @@ A task management application that allows users to add, edit, delete and view ta
 
 ### Steps to Run
 1. Download the Project:
-- Download the project files (index.html, styles.css, script.js, and images) to your local machine.
+- Download the index.html file to your local machine
 
 2. Open the Application:
 - Open the index.html file in your web browser by double-clicking it or dragging it into the browser window.
@@ -40,6 +40,13 @@ A task management application that allows users to add, edit, delete and view ta
 - Add tasks using the form and enter task name and description.
 - Toggle task status, edit,view or delete tasks as needed.
 - Use different filter buttons to view specific tasks such as completed, pending or all tasks.
+
+# Code Snippets
+ - The folder I386_JavaScript_Assignment 1 consists of three files
+    - main.html
+    - styles.css
+    - script.js
+    - and images folder
 
 # Task Management Workflow
 - Users can **add, edit, view, and delete tasks**.
