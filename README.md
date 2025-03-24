@@ -23,8 +23,8 @@ The application utilizes JavaScript for the front-end functionality and HTML, CS
 
 # How to Run the Application
 ### Prerequisites
-1.A modern web browser (e.g., Google Chrome, Mozilla Firefox, Microsoft Edge).
-2.No additional software or dependencies are required.
+- A modern web browser (e.g., Google Chrome, Mozilla Firefox, Microsoft Edge).
+- No additional software or dependencies are required.
 
 ### Steps to Run
 1. Download the Project:
@@ -36,4 +36,17 @@ Open the index.html file in your web browser by double-clicking it or dragging i
 3. Use the Application:
 Add tasks using the form and enter task name and description.
 Toggle task status, edit, or delete tasks as needed.
-Use the filter buttons to view specific tasks.
+Use the filter buttons to view specific tasks such as completed, pending or all tasks.
+
+### Task Management Workflow
+- Users can **add, edit, view, and delete tasks**.
+- **Completed tasks** are styled differently with a color change.
+- Clicking **Edit**:
+ - Automatically fills the form with the task details.
+ - Updates the task in **local storage** after saving.
+- Tasks can be **deleted** with the Delete button.
+- Users can toggle between **Completed** and **Pending** status.
+- **Filter Options**:
+ - **All** – Shows all tasks.
+ - **Completed** – Displays only completed tasks.
+ - **Pending** – Displays only pending tasks.
