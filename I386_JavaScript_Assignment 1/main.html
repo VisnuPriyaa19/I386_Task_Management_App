@@ -1,0 +1,42 @@
+<html>
+<head>
+  <title>Task Management App</title>
+  <!-- add browser icon -->
+  <link rel="icon" href="images/logo.png">                                
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Image Section -->
+    <div class="image">
+      <img src="images/bg_pic.png" style="max-width: 100%; height: auto;">
+    </div>
+
+    <!-- Task Manager Section -->
+    <div class="task-manager">
+      <h1>Task Manager</h1>
+
+      <!-- Form to add tasks -->
+      <form id="taskForm">
+        <input type="text" id="taskName" placeholder="Task Name" required>              <!-- required:to ensure no blanks-->
+        <textarea id="taskDesc" placeholder="Task Description" required></textarea>
+        <button type="submit" id="add">Add Task</button>
+      </form>
+
+      <!-- Filter buttons -->
+      <div class="filters">
+        <button id="filterAll">All</button>
+        <button id="filterCompleted">Completed</button>
+        <button id="filterPending">Pending</button>
+      </div>
+
+      <!-- Task list to display list of tasks -->
+      <div id="taskList">
+
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
