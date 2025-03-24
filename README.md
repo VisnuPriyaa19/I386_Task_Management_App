@@ -1,8 +1,6 @@
 # I386_Task_Management_App
 A task management application that allows users to add, edit, delete and view tasks.
 
-The application utilizes JavaScript for the front-end functionality and HTML, CSS for the user interface.
-
 # Key Features
 ### 1.Add task
 - Users can add tasks by filling out the form with a task name and description.
@@ -17,9 +15,14 @@ The application utilizes JavaScript for the front-end functionality and HTML, CS
 ### 5.Toggle task status
 - Users can mark tasks as "Completed" or "Pending" by clicking the status button.
 ### 6. Filter tasks
-- Users can filter tasks to view : All, Completed, Pending.
+- Users can filter tasks to view : All, Completed, Pending using seperate buttons.
 ### 7.Persistent storage
 - Tasks are saved in the browser's local storage, so they persist even after the page is refreshed or closed.
+
+# Technologies Used
+1. HTML
+2. CSS
+3. JavaScript
 
 # How to Run the Application
 ### Prerequisites
@@ -28,15 +31,15 @@ The application utilizes JavaScript for the front-end functionality and HTML, CS
 
 ### Steps to Run
 1. Download the Project:
-Download the project files (index.html, styles.css, script.js, and images) to your local machine.
+- Download the project files (index.html, styles.css, script.js, and images) to your local machine.
 
 2. Open the Application:
-Open the index.html file in your web browser by double-clicking it or dragging it into the browser window.
+- Open the index.html file in your web browser by double-clicking it or dragging it into the browser window.
 
 3. Use the Application:
-Add tasks using the form and enter task name and description.
-Toggle task status, edit, or delete tasks as needed.
-Use the filter buttons to view specific tasks such as completed, pending or all tasks.
+- Add tasks using the form and enter task name and description.
+- Toggle task status, edit,view or delete tasks as needed.
+- Use different filter buttons to view specific tasks such as completed, pending or all tasks.
 
 # Task Management Workflow
 - Users can **add, edit, view, and delete tasks**.
