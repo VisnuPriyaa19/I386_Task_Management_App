@@ -41,8 +41,8 @@ A task management application that allows users to add, edit, delete and view ta
 - Toggle task status, edit,view or delete tasks as needed.
 - Use different filter buttons to view specific tasks such as completed, pending or all tasks.
 
-# Code Snippets
- - The folder I386_JavaScript_Assignment 1 consists of three files
+# Code Folder
+ - The folder **I386_JavaScript_Assignment 1** consists of three files
     - main.html
     - styles.css
     - script.js
