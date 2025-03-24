@@ -38,15 +38,17 @@ Add tasks using the form and enter task name and description.
 Toggle task status, edit, or delete tasks as needed.
 Use the filter buttons to view specific tasks such as completed, pending or all tasks.
 
-### Task Management Workflow
+# Task Management Workflow
 - Users can **add, edit, view, and delete tasks**.
 - **Completed tasks** are styled differently with a color change.
 - Clicking **Edit**:
- - Automatically fills the form with the task details.
- - Updates the task in **local storage** after saving.
+  - Automatically fills the form with the task details.
+  - Updates the task in **local storage** after saving.
 - Tasks can be **deleted** with the Delete button.
 - Users can toggle between **Completed** and **Pending** status.
 - **Filter Options**:
- - **All** – Shows all tasks.
- - **Completed** – Displays only completed tasks.
- - **Pending** – Displays only pending tasks.
+  - **All** – Shows all tasks.
+  - **Completed** – Displays only completed tasks.
+  - **Pending** – Displays only pending tasks.
+
+This project thus provides a simple and efficient way to manage daily tasks effectively.
