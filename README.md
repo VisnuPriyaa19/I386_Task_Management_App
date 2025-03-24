@@ -61,4 +61,6 @@ A task management application that allows users to add, edit, delete and view ta
   - **Completed** – Displays only completed tasks.
   - **Pending** – Displays only pending tasks.
 
+[Task Management Application Link](https://visnupriyaa19.github.io/I386_Task_Management_App/)
+
 This project thus provides a simple and efficient way to manage daily tasks effectively.
